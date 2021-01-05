@@ -1,9 +1,624 @@
+<!DOCTYPE html>
 <html>
     <head>
-
+        <meta charset="utf-8">
+        <title>웹 캘린더</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script type = "text/javascript" src="{% static 'map.js' %}"></script>
+        <script type = "text/javascript" src="{% static 'top.js' %}"></script>
+        <script type = "text/javascript" src="{% static 'nav.js' %}"></script>
+        <script type = "text/javascript" src="{% static 'popup.js' %}"></script>
+        <link rel="stylesheet" href="{% static 'index.css' %}">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
     </head>
 
     <body>
-        hi
+        <div class="container">
+            <div class="back-space"></div>
+            <ul class="navbar" id="sidebox">
+                <li><a href="{% url 'main' %}" class="nav_title">진주 유등축제</a></li>
+                <hr style="margin:20px 0">
+                <li><a href="{% url 'timetable' %}" class="moveToarea">행사일정</a></li>
+                <li><a href="{% url 'index' %}" class="moveToarea">축제둘러보기</a></li>
+                <li><a class="moveToarea1" onclick="area(event,'.moveToarea1');" data-target="#area1">구역1</a></li>
+                <li><a class="moveToarea2" onclick="area(event,'.moveToarea2');" data-target="#area2">구역2</a></li>
+                <li><a class="moveToarea3" onclick="area(event,'.moveToarea3');" data-target="#area3">구역3</a></li>
+            </ul>
+
+            <div class="main_content">
+                <div id="banner">
+                    진주 유등축제
+                </div>
+                  <hr style="margin:10px 0;">
+                <div class = "map">
+                  <!-- 구역1 -->
+                  <div class= "map_area1" onclick="area(event,'.map_area1');" data-target="#area1">
+                    <img src="{% static 'img/location_icon1.png' %}" class="location" id = "location1_icon1" title="진주성 야경" data-target="#jinju_castle"
+                    onclick="icon(event, '#location1_icon1');"
+                    onmouseenter = "zoomIn(event)"
+                    onmouseleave = "zoomOut(event)"/>
+                    <img src="{% static 'img/location_icon1.png' %}" class="location" id = "location1_icon2" title="불꽃놀이" data-target='#fireworks'
+                    onclick="icon(event, '#location1_icon2');"
+                    onmouseenter = "zoomIn(event)"
+                    onmouseleave = "zoomOut(event)"/>
+                    <img src="{% static 'img/location_icon1.png' %}" class="location" id = "location1_icon3" title="수상등" data-target='#water_light'
+                    onclick="icon(event, '#location1_icon3');"
+                    onmouseenter = "zoomIn(event)"
+                    onmouseleave = "zoomOut(event)"/>
+                  </div>
+                  <!-- 구역2 -->
+                  <div class= "map_area2" onclick="area(event, '.map_area2');" data-target='#area2' >
+                    <img src="{% static 'img/location_icon2.png' %}" class="location" id = "location2_icon1" title="드라마 세트장" data-target='#drama_set'
+                    onclick="icon(event, '#location2_icon1');"
+                    onmouseenter = "zoomIn(event)"
+                    onmouseleave = "zoomOut(event)"/>
+                    <img src="{% static 'img/location_icon2.png' %}" class="location" id = "location2_icon2" title="먹거리" data-target='#food_zone'
+                    onclick="icon(event, '#location2_icon2');"
+                    onmouseenter = "zoomIn(event)"
+                    onmouseleave = "zoomOut(event)"/>
+                  </div>
+                  <!-- 구역3 -->
+                  <div class= "map_area3" onclick="area(event, '.map_area3');" data-target='#area3'>
+                    <img src="{% static 'img/location_icon3.png' %}" class="location" id = "location3_icon1" title="소망등 터널" data-target='#hope_light_tunnel'
+                    onclick="icon(event, '#location3_icon1');"
+                    onmouseenter = "zoomIn(event)"
+                    onmouseleave = "zoomOut(event)"/>
+                    <img src="{% static 'img/location_icon3.png' %}" class="location" id = "location3_icon2" title="유등 띄우기" data-target='#floating_light'
+                    onclick="icon(event, '#location3_icon2');"
+                    onmouseenter = "zoomIn(event)"
+                    onmouseleave = "zoomOut(event)"/>
+                    <img src="{% static 'img/location_icon3.png' %}" class="location" id = "location3_icon3" title="진주교" data-target='#jinju_bridge'
+                    onclick="icon(event, '#location3_icon3');"
+                    onmouseenter = "zoomIn(event)"
+                    onmouseleave = "zoomOut(event)"/>
+                  </div>
+                </div>
+                <br>
+                <div class = "areabox1">
+                <center>
+                    <h2 id = "area1">구역 1</h2>
+                    <br>
+                    <a href="#a1-1" class="btn-example" onclick="javascript:layer_popup('#a1-1')"  id="jinju_castle">진주성의 야경</a>
+                </center>
+
+                <!-- 이미지는 임의로 넣어놨습니당.. 파일로 바꾸깅 -->
+                <div class="container1">
+                    <div id="a1-1" class="pop-layer">
+                        <div class="pop-container">
+                            <div class="pop-conts">
+                                <!--content //-->
+                                <p class="ctxt mb20"><p class="img_title">진주성의 야경</p>
+                                    임진왜란의 전적지이자,<br>
+                                    지금은 진주시의 랜드마크로 자리잡은 진주성의 야경입니다.<br>
+                                    성벽의 불빛과 위엄있는 촉석루의 모습을 볼 수 있어요.<br>
+
+                                </p>
+
+                                <div class="btn-r">
+                                    <a href="#" class="btn-layerClose">Close</a>
+                                </div>
+                                <!--// content-->
+                            </div>
+                        </div>
+                    </div>
+
+                    <br>
+                    <div class="slide">
+                        <div class="slideNumber">1</div>
+                        <img src= "{% static 'img/web/night1.jpg' %}">
+                    </div>
+                    <div class="slide">
+                        <div class="slideNumber">2</div>
+                        <img src= "{% static 'img/web/night2.jpg' %}">
+                    </div>
+                    <div class="slide">
+                        <div class="slideNumber">3</div>
+                        <img src= "{% static 'img/web/night4.jpg' %}">
+                    </div>
+
+                    <!-- 전 후 넘어가는 아이콘 -->
+                    <a class="previous" onclick="moveSlides(-1)">
+                        <i class="fa fa-chevron-circle-left"></i>
+                    </a>
+                    <a class="next" onclick="moveSlides(1)">
+                        <i class="fa fa-chevron-circle-right"></i>
+                    </a>
+                    <br>
+
+                    <div style="text-align:center">
+                        <span class="footerdot"
+                            onclick="activeSlide(1)">
+                        </span>
+                        <span class="footerdot"
+                            onclick="activeSlide(2)">
+                        </span>
+                        <span class="footerdot"
+                            onclick="activeSlide(3)">
+                        </span>
+                    </div>
+                </div>
+                <br>
+
+                <center>
+                    <br>
+                    <a href="#a1-2" class="btn-example" onclick="javascript:layer_popup('#a1-2')" id="fireworks">불꽃놀이</a>
+                </center>
+
+                <!-- 이미지는 임의로 넣어놨습니당.. 파일로 바꾸깅1 -->
+                <div class="container1">
+                    <div id="a1-2" class="pop-layer">
+                        <div class="pop-container">
+                            <div class="pop-conts">
+                                <!--content //-->
+                                <p class="ctxt mb20"><p class="img_title">불꽃놀이</p>
+                                    유등축제의 하이라이트, 불꽃놀이 입니다.<br>
+                                    하늘을 수놓은 불꽃들의 향연을 놓치지 마세요.<br>
+                                    불꽃놀이 일정은 달력 페이지를 참고해주세요.<br>
+
+                                </p>
+
+                                <div class="btn-r">
+                                    <a href="#" class="btn-layerClose">Close</a>
+                                </div>
+                                <!--// content-->
+                            </div>
+                        </div>
+                    </div>
+
+                    <br>
+                    <div class="slide1">
+                        <div class="slideNumber">1</div>
+                        <img src= "{% static 'img/web/fire1.jpg' %}">
+                    </div>
+                    <div class="slide1">
+                        <div class="slideNumber">2</div>
+                        <img src= "{% static 'img/web/fire2.jpg' %}">
+                    </div>
+                    <div class="slide1">
+                        <div class="slideNumber">3</div>
+                        <img src= "{% static 'img/web/fire4.jpg' %}">
+                    </div>
+
+                    <!-- 전 후 넘어가는 아이콘 -->
+                    <a class="previous" onclick="moveSlides1(-1)">
+                        <i class="fa fa-chevron-circle-left"></i>
+                    </a>
+                    <a class="next" onclick="moveSlides1(1)">
+                        <i class="fa fa-chevron-circle-right"></i>
+                    </a>
+                    <br>
+
+                    <div style="text-align:center">
+                        <span class="footerdot1"
+                            onclick="activeSlide1(1)">
+                        </span>
+                        <span class="footerdot1"
+                            onclick="activeSlide1(2)">
+                        </span>
+                        <span class="footerdot1"
+                            onclick="activeSlide1(3)">
+                        </span>
+                    </div>
+                </div>
+                <br>
+
+                <center>
+                    <br>
+                    <a href="#a1-3" class="btn-example" onclick="javascript:layer_popup('#a1-3')" id="water_light">수상등</a>
+                </center>
+
+                <!-- 이미지는 임의로 넣어놨습니당.. 파일로 바꾸깅2 -->
+                <div class="container1">
+                    <div id="a1-3" class="pop-layer">
+                        <div class="pop-container">
+                            <div class="pop-conts">
+                                <!--content //-->
+                                <p class="ctxt mb20"><p class="img_title">수상등</p>
+                                    남강을 따라 잔잔하게 떠 있는 수상등입니다. <br>
+                                    다양한 색깔과 모양을 가진 수상등을 감상하며 <br>
+                                    그 속에 숨겨진 이야기들도 찾아보아요. <br>
+
+                                </p>
+
+                                <div class="btn-r">
+                                    <a href="#" class="btn-layerClose">Close</a>
+                                </div>
+                                <!--// content-->
+                            </div>
+                        </div>
+                    </div>
+
+                    <br>
+                    <div class="slide2">
+                        <div class="slideNumber">1</div>
+                        <img src= "{% static 'img/web/lamp2.jpg' %}">
+                    </div>
+                    <div class="slide2">
+                        <div class="slideNumber">2</div>
+                        <img src= "{% static 'img/web/lamp3.jpg' %}">
+                    </div>
+                    <div class="slide2">
+                        <div class="slideNumber">3</div>
+                        <img src= "{% static 'img/web/lamp4.jpg' %}">
+                    </div>
+
+                    <!-- 전 후 넘어가는 아이콘 - 페이지 분위기 따라 수정-->
+                    <a class="previous" onclick="moveSlides2(-1)">
+                        <i class="fa fa-chevron-circle-left"></i>
+                    </a>
+                    <a class="next" onclick="moveSlides2(1)">
+                        <i class="fa fa-chevron-circle-right"></i>
+                    </a>
+                    <br>
+
+                    <div style="text-align:center">
+                        <span class="footerdot2"
+                            onclick="activeSlide2(1)">
+                        </span>
+                        <span class="footerdot2"
+                            onclick="activeSlide2(2)">
+                        </span>
+                        <span class="footerdot2"
+                            onclick="activeSlide2(3)">
+                        </span>
+                    </div>
+                </div>
+                <br>
+            </div>
+            <br>
+            <div class = "areabox2">
+                <center>
+                    <h2 id = "area2">구역 2</h2>
+                    <br>
+                    <a href="#a2-1" class="btn-example" onclick="javascript:layer_popup('#a2-1')" id="drama_set">드라마 세트</a>
+                </center>
+
+                <!-- 이미지는 임의로 넣어놨습니당.. 파일로 바꾸깅3 -->
+                <div class="container1">
+                    <div id="a2-1" class="pop-layer">
+                        <div class="pop-container">
+                            <div class="pop-conts">
+                                <!--content //-->
+                                <p class="ctxt mb20"><p class="img_title">드라마세트</p>
+                                    유등축제 기간의 진주에서는 <br>
+                                    코리아 드라마 페스티벌이 개최됩니다. <br>
+                                    전 세계로 뻗어나가는 한국의 드라마를 다채롭게 체험해보세요. <br>
+
+
+                                </p>
+
+                                <div class="btn-r">
+                                    <a href="#" class="btn-layerClose">Close</a>
+                                </div>
+                                <!--// content-->
+                            </div>
+                        </div>
+                    </div>
+
+                    <br>
+                    <div class="slide3">
+                        <div class="slideNumber">1</div>
+                        <img src= "{% static 'img/web/drama1.jpg' %}">
+                    </div>
+                    <div class="slide3">
+                        <div class="slideNumber">2</div>
+                        <img src= "{% static 'img/web/drama2.jpg' %}">
+                    </div>
+                    <div class="slide3">
+                        <div class="slideNumber">3</div>
+                        <img src= "{% static 'img/web/drama3.jpg' %}">
+                    </div>
+
+                    <!-- 전 후 넘어가는 아이콘 -->
+                    <a class="previous" onclick="moveSlides3(-1)">
+                        <i class="fa fa-chevron-circle-left"></i>
+                    </a>
+                    <a class="next" onclick="moveSlides3(1)">
+                        <i class="fa fa-chevron-circle-right"></i>
+                    </a>
+                    <br>
+
+                    <div style="text-align:center">
+                        <span class="footerdot3"
+                            onclick="activeSlide3(1)">
+                        </span>
+                        <span class="footerdot3"
+                            onclick="activeSlide3(2)">
+                        </span>
+                        <span class="footerdot3"
+                            onclick="activeSlide3(3)">
+                        </span>
+                    </div>
+                </div>
+                <br>
+
+                <center>
+                    <br>
+                    <a href="#a2-2" class="btn-example" onclick="javascript:layer_popup('#a2-2')" id="food_zone">먹거리</a>
+                </center>
+
+                <!-- 이미지는 임의로 넣어놨습니당.. 파일로 바꾸깅4 -->
+                <div class="container1">
+                    <div id="a2-2" class="pop-layer">
+                        <div class="pop-container">
+                            <div class="pop-conts">
+                                <!--content //-->
+                                <p class="ctxt mb20"><p class="img_title">먹거리</p>
+                                    축제의 별미는 뭐니뭐니해도 먹거리! <br>
+                                    강변을 따라 펼쳐진 다양한 먹거리부스과 함께 <br>
+                                    배부른 축제를 즐겨보세요. <br>
+
+
+                                </p>
+
+                                <div class="btn-r">
+                                    <a href="#" class="btn-layerClose">Close</a>
+                                </div>
+                                <!--// content-->
+                            </div>
+                        </div>
+                    </div>
+
+                    <br>
+                    <div class="slide4">
+                        <div class="slideNumber">1</div>
+                        <img src= "{% static 'img/web/food1.jpg' %}">
+                    </div>
+                    <div class="slide4">
+                        <div class="slideNumber">2</div>
+                        <img src= "{% static 'img/web/food2.jpg' %}">
+                    </div>
+                    <div class="slide4">
+                        <div class="slideNumber">3</div>
+                        <img src= "{% static 'img/web/food3.jpg' %}">
+                    </div>
+                    <!-- 전 후 넘어가는 아이콘 -->
+                    <a class="previous" onclick="moveSlides4(-1)">
+                        <i class="fa fa-chevron-circle-left"></i>
+                    </a>
+                    <a class="next" onclick="moveSlides4(1)">
+                        <i class="fa fa-chevron-circle-right"></i>
+                    </a>
+                    <br>
+
+                    <div style="text-align:center">
+                        <span class="footerdot4"
+                            onclick="activeSlide4(1)">
+                        </span>
+                        <span class="footerdot4"
+                            onclick="activeSlide4(2)">
+                        </span>
+                        <span class="footerdot4"
+                            onclick="activeSlide4(3)">
+                        </span>
+                    </div>
+                </div>
+                <br>
+            </div>
+            <br>
+            <div class = "areabox3">
+                    <center>
+                        <h2 id = "area3">구역 3</h2>
+                        <br>
+                        <a href="#a3-1" class="btn-example" onclick="javascript:layer_popup('#a3-1')" id="hope_light_tunnel">소망등 터널</a>
+                    </center>
+
+                    <!-- 이미지는 임의로 넣어놨습니당.. 파일로 바꾸깅3 -->
+                    <div class="container1">
+                        <div id="a3-1" class="pop-layer">
+                            <div class="pop-container">
+                                <div class="pop-conts">
+                                    <!--content //-->
+                                    <p class="ctxt mb20"><p class="img_title">소망등 터널</p>
+                                        사람들의 소중한 소망이 담긴 터널을 걸어보세요. <br>
+                                        당신의 소망은 무엇인가요? <br>
+                                        공식홈페이지의 신청을 통해 당신의 소망도 달 수 있답니다. <br>
+
+
+                                    </p>
+
+                                    <div class="btn-r">
+                                        <a href="#" class="btn-layerClose">Close</a>
+                                    </div>
+                                    <!--// content-->
+                                </div>
+                            </div>
+                        </div>
+
+                        <br>
+                        <div class="slide5">
+                            <div class="slideNumber">1</div>
+                            <img src= "{% static 'img/web/somang1.jpg' %}">
+                        </div>
+                        <div class="slide5">
+                            <div class="slideNumber">2</div>
+                            <img src= "{% static 'img/web/somang2.jpg' %}">
+                        </div>
+                        <div class="slide5">
+                            <div class="slideNumber">3</div>
+                            <img src= "{% static 'img/web/somang3.jpg' %}">
+                        </div>
+
+                        <!-- 전 후 넘어가는 아이콘 -->
+                        <a class="previous" onclick="moveSlides5(-1)">
+                            <i class="fa fa-chevron-circle-left"></i>
+                        </a>
+                        <a class="next" onclick="moveSlides5(1)">
+                            <i class="fa fa-chevron-circle-right"></i>
+                        </a>
+                        <br>
+
+                        <div style="text-align:center">
+                            <span class="footerdot5"
+                                onclick="activeSlide5(1)">
+                            </span>
+                            <span class="footerdot5"
+                                onclick="activeSlide5(2)">
+                            </span>
+                            <span class="footerdot5"
+                                onclick="activeSlide5(3)">
+                            </span>
+                        </div>
+                    </div>
+                    <br>
+
+                    <center>
+                        <br>
+                        <a href="#a3-2" class="btn-example" onclick="javascript:layer_popup('#a3-2')" id="floarting_light">유등띄우기</a>
+                    </center>
+
+                    <!-- 이미지는 임의로 넣어놨습니당.. 파일로 바꾸깅1 -->
+                    <div class="container1">
+                        <div id="a3-2" class="pop-layer">
+                            <div class="pop-container">
+                                <div class="pop-conts">
+                                    <!--content //-->
+                                    <p class="ctxt mb20"><p class="img_title">유등띄우기</p>
+                                        유등은 임진왜란 중 성 밖의 가족에게 안부를 전하는 <br>
+                                        통신수단으로 사용되었다고 합니다. <br>
+                                        당신의 이야기가 담긴 유등을 강물에 띄워 보내보세요. <br>
+
+                                    </p>
+
+                                    <div class="btn-r">
+                                        <a href="#" class="btn-layerClose">Close</a>
+                                    </div>
+                                    <!--// content-->
+                                </div>
+                            </div>
+                        </div>
+
+                        <br>
+                        <div class="slide6">
+                            <div class="slideNumber">1</div>
+                            <img src= "{% static 'img/web/llamp1.jpg' %}">
+                        </div>
+                        <div class="slide6">
+                            <div class="slideNumber">2</div>
+                            <img src= "{% static 'img/web/llamp2.jpg' %}">
+                        </div>
+                        <div class="slide6">
+                            <div class="slideNumber">3</div>
+                            <img src= "{% static 'img/web/llamp3.jpg' %}">
+                        </div>
+                    <!-- 전 후 넘어가는 아이콘 -->
+                    <a class="previous" onclick="moveSlides6(-1)">
+                        <i class="fa fa-chevron-circle-left"></i>
+                    </a>
+                    <a class="next" onclick="moveSlides6(1)">
+                        <i class="fa fa-chevron-circle-right"></i>
+                    </a>
+                    <br>
+
+                    <div style="text-align:center">
+                        <span class="footerdot6"
+                            onclick="activeSlide6(1)">
+                        </span>
+                        <span class="footerdot6"
+                            onclick="activeSlide6(2)">
+                        </span>
+                        <span class="footerdot6"
+                            onclick="activeSlide6(3)">
+                        </span>
+                    </div>
+                </div>
+                <br>
+
+                <center>
+                    <br>
+                    <a href="#a3-3" class="btn-example" onclick="javascript:layer_popup('#a3-3')" id="jinju_bridge">진주교</a>
+                </center>
+
+                <!-- 이미지는 임의로 넣어놨습니당.. 파일로 바꾸깅1 -->
+                <div class="container1">
+                    <div id="a3-3" class="pop-layer">
+                        <div class="pop-container">
+                            <div class="pop-conts">
+                                <!--content //-->
+                                <p class="ctxt mb20"><p class="img_title">진주교</p>
+                                    진주교를 따라 길게 펼쳐진 앵두알 터널이 신비로움을 자아냅니다. <br>
+                                    반짝이는 진주교에서 인생샷 남기기, 빼놓지 마세요! <br>
+                                </p>
+
+                                <div class="btn-r">
+                                    <a href="#" class="btn-layerClose">Close</a>
+                                </div>
+                                <!--// content-->
+                            </div>
+                        </div>
+                    </div>
+
+                    <br>
+                    <div class="slide7">
+                        <div class="slideNumber">1</div>
+                        <img src= "{% static 'img/web/bridge1.jpg' %}">
+                    </div>
+                    <div class="slide7">
+                        <div class="slideNumber">2</div>
+                        <img src= "{% static 'img/web/bridge2.jpg' %}">
+                    </div>
+                    <div class="slide7">
+                        <div class="slideNumber">3</div>
+                        <img src= "{% static 'img/web/bridge3.jpg' %}">
+                    </div>
+                <!-- 전 후 넘어가는 아이콘 -->
+                <a class="previous" onclick="moveSlides7(-1)">
+                    <i class="fa fa-chevron-circle-left"></i>
+                </a>
+                <a class="next" onclick="moveSlides7(1)">
+                    <i class="fa fa-chevron-circle-right"></i>
+                </a>
+                <br>
+
+                <div style="text-align:center">
+                    <span class="footerdot7"
+                        onclick="activeSlide7(1)">
+                    </span>
+                    <span class="footerdot7"
+                        onclick="activeSlide7(2)">
+                    </span>
+                    <span class="footerdot7"
+                        onclick="activeSlide7(3)">
+                    </span>
+                </div>
+            </div>
+        </div>
+                <script src="{% static 'slider.js' %}"></script>
+            <div class="footer"></div>
+        <a id="back-to-top"></a>
+            <script src="{% static 'slider.js' %}"></script>
+            <!-- <div class="footer"></div> -->
+
+        <script src="{% static 'upbutton.js' %}"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <footer>
+            <div class = "section1">
+                잘못된 정보 제보<br>
+                <hr style="margin:20px 0">
+                MAIL: tip_off@naver.com
+            </div>
+            <div class = "section2">
+                더 많은 정보<br>
+                <hr style="margin:20px 0">
+                <a id = "official" href="http://yudeung.com/">공식 홈페이지</a>
+            </div>
+            <div class = "section3">
+                진주문화예술재단<br>
+                <hr style="margin:20px 0">
+                경상남도 진주시 강남로 291번길 10 <br>
+                TEL: 055)761-9111<br>
+                FAX: 055) 758-8111
+            </div>
+            <div class = "section4">
+                만든 사람<br>
+                <hr style="margin:20px 0">
+                메인페이지(지도): 김예원, 윤지연 <br>
+                메인페이지(사진): 최보미, 최정민 <br>
+                일정페이지: 김승연, 이다혜<br>
+            </div>
+        </footer>
+            </div>
+        </div>
     </body>
 </html>

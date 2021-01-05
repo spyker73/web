@@ -1,0 +1,47 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>웹 캘린더</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script type="text/javascript" src="{% static 'map.js' %}"></script>
+        <script type="text/javascript" src="{% static 'top.js' %}"></script>
+        <script type="text/javascript" src="{% static 'slider.js' %}"></script>
+        <script type="text/javascript" src="{% static 'upbutton.js' %}"></script>
+        <link rel="stylesheet" href="{% static 'index.css' %}">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    </head>
+
+    <body>
+        <div class="container">
+            <div class="side_bar" id="box">
+                <ul class="navbar" id="sidebox">
+                    <li><a href="{% url 'main' %}" class="nav_title">진주 유등축제</a></li>
+                    <hr style="margin:20px 0">
+                    <li><a href="{% url 'timetable' %}" class="moveToarea">행사일정</a></li>
+                    <li><a href="{% url 'index' %}" class="moveToarea">축제둘러보기</a></li>
+                    <a class="previous" onclick="moveSlides(-1)">
+                        <i class="fa fa-chevron-circle-left"></i>
+                    </a>
+                    <a class="next" onclick="moveSlides(1)">
+                        <i class="fa fa-chevron-circle-right"></i>
+                    </a>
+                </ul>
+            </div>
+
+            <div class="main_content">
+                <div class="banner">
+                    진주 유등축제
+                </div>
+                <hr style="margin:10px 0;">
+
+                <div class="calendar">
+
+                </div>
+            </div>
+        
+        </div>
+    </body>
+</html>

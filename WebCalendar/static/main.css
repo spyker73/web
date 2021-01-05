@@ -1,0 +1,171 @@
+@font-face {font-family: 'NotoSerifKR';src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/NotoSerifKR.woff') format('woff');font-weight: normal;font-style: normal;}
+@font-face {font-family: 'Cafe24Danjunghae';src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_twelve@1.1/Cafe24Danjunghae.woff') format('woff');font-weight: normal;font-style: normal;}
+
+body {
+  margin:0;
+  font-family: 'NotoSerifKR';
+}
+.container{
+  display:flex;
+  height: auto;
+}
+
+/* navbar 수정 */
+.back-space{
+  background-color: #2c2c2c;
+  padding: 10px;
+  flex:1;
+  margin:0;
+  top: 10px;
+  z-index:90;
+}
+#sidebox {
+  position: absolute; 
+  padding: 0px;
+  margin:30px;
+  top: 10px;
+  flex:1;
+	background-color: #2c2c2c;
+  color: #fff;
+  z-index:100;
+  list-style:none;
+}
+.navbar .nav_title {
+  font-size : 20px;
+  color: white !important;
+}
+ul.navbar li a:hover:not(.nav_title){
+  color: white;
+}
+ul.navbar li a {
+  text-decoration:none;
+  text-align:center;
+  color:#B6B6B6;
+  display:block;
+  margin: 10px;
+  padding: 15px 20px;
+}
+ul.navbar li{
+  text-decoration:none;
+}
+/* 아이콘 구현 */
+/* ul.navbar li a.moveToarea::before {
+  background-image: url("https://ifh.cc/g/JMSyku.png");
+  background-size: 29px 30px;
+  background-repeat:no-repeat;
+  content: " ";
+  display: inline-block;
+  vertical-align: middle;
+  width: 27%; 
+  height: 35px;
+}
+ul.navbar li a.moveToarea1::before, a.moveToarea2::before, a.moveToarea3::before {
+  background-image: url("https://ifh.cc/g/pvKrE9.png");
+  background-size: 24px 30px;
+  background-repeat:no-repeat;
+  vertical-align: middle;
+  content: " ";
+  display: inline-block;
+  width: 23%; 
+  height: 35px; 
+} */
+
+/* main_content */
+.main_content {
+  background-color: #f4f3ef;
+  flex:5;
+}
+#banner {
+  display: inline-block;
+  font-size : 30px;
+  text-align:center;
+  margin: 5px;
+  padding: 15px 20px;
+}
+
+/*올라가기버튼*/
+#wrap{
+    margin:0 auto;
+    width:300px;
+  }
+#back-to-top { 
+    display: inline-block;
+    background-color: #2c2c2c;;
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    border-radius: 4px;
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    transition: background-color .3s, opacity .5s, visibility .5s;
+    opacity: 0;
+    visibility: hidden;
+    z-index: 1000;
+}
+#back-to-top::after {
+    content: "\f077";
+    font-family: 'FontAwesome';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 2em;
+    line-height: 50px;
+    color: #fff;
+}
+#back-to-top:hover {
+    cursor: pointer;
+    background-color: #525252;
+}
+#back-to-top:active {
+    background-color: #2c2c2c;
+}
+#back-to-top.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* main */
+.main_content > .main {
+    position: relative; 
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.main_content > .main::before {    
+    content: "";
+    background-image: url('img/mainpic.jpg');
+    background-size: cover;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    opacity: 0.75;
+}
+
+.main_content > .main > .welcome {
+    position: relative;
+    padding: 40px 0 5px 0;
+    color: #ffffff;  
+    font-size: 6rem;
+    line-height: 0.9;
+    text-align: center;
+    text-shadow: 2px 2px 2px gray;
+    letter-spacing: 5px;
+    font-family: 'Cafe24Danjunghae';
+
+    border-style:solid;
+    border-top-width: 2px;
+    border-bottom-width: 2px;
+    border-right-width: 0;
+    border-left-width: 0;
+    border-color: black;
+}
+.main_content > .main > .welcome > p {
+    font-size:1.5rem;
+    color: #F4DF90; 
+    text-shadow: 2px 2px 2px gray;
+}

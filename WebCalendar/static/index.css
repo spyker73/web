@@ -1,0 +1,387 @@
+@font-face {font-family: 'NotoSerifKR';src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/NotoSerifKR.woff') format('woff');font-weight: normal;font-style: normal;}
+body {
+  margin:0;
+  font-family: 'NotoSerifKR';
+}
+.container{
+  display:flex;
+}
+
+/* navbar 수정 */
+
+.side_bar{
+  background-color: rgba(87, 102, 241, 0.822);;
+  padding: 0px;
+  flex:1;
+  margin:0;
+  top: 10px;
+  color: #fff;
+  float:right;
+}
+.side_bar > ul{
+  list-style:none;
+  float:left;
+}
+/*
+#sidebox{
+  position: absolute; 
+  padding: 0px;
+  margin:30px;
+  top: 10px;
+  flex:1;
+	background-color: rgba(87, 102, 241, 0.822);
+  color: #fff;
+  z-index:100;
+  list-style:none;
+}
+*/
+ul.navbar li::after {
+  float: right;
+  content: "";
+}
+.navbar .nav_title {
+  font-size : 20px;
+}
+ul.navbar a {
+  text-decoration:none;
+  text-align:center;
+  color:white;
+  display:block;
+  margin: 10px;
+  padding: 15px 20px;
+}
+ul.navbar li{
+  text-decoration:none;
+}
+
+/* main_content */
+.main_content {
+  background-color: #f4f3ef;
+  padding: 10px;
+  flex:5;
+}
+.banner {
+  display: inline-block;
+  font-size : 30px;
+  text-align:center;
+  margin: 5px;
+  padding: 15px 20px;
+}
+.main_content > .map {
+  background-image: url("img/map.jpg");
+  background-size: contain;
+  width:1050px;
+  height:500px;
+  margin:20px;
+  margin-top:5%;
+  margin-left: 7.5%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content:center;
+}
+.main_content a{
+  font-size: 20px;
+  text-decoration: none;
+  color: #2c2c2c;
+}
+/*구역1,2,3 깊이 및 위치 조정*/
+.map_area1,.map_area2,.map_area3{
+  z-index:0;
+}
+
+
+/*위치 아이콘 깊이 및 위치 조정*/
+.location{
+  width: 70px;
+  height: auto;
+  z-index:1;
+}
+#location1_icon1{/*진주성 야경*/
+  left:40%;
+  top:60%;
+  position: relative;
+}
+#location1_icon2{/*불꽃놀이*/
+  left:40%;
+  top:70%;
+  position: relative;
+}
+#location1_icon3{/*수상등*/
+  left:50%;
+  top:70%;
+  position: relative;
+}
+#location2_icon1{/*드라마 세트장*/
+  left:35%;
+  top:30%;
+  position: relative;
+}
+#location2_icon2{/*먹거리*/
+  left:48%;
+  top:40%;
+  position: relative;
+}
+#location3_icon1{/*소망등 터널*/
+  left:40%;
+  top:18%;
+  position: relative;
+}
+#location3_icon2{/*유등 띄우기*/
+  left:43%;
+  top:-17%;
+  position: relative;
+}
+#location3_icon3{/*진주교*/
+  left:46%;
+  top:5%;
+  position: relative;
+}
+
+/*구역1,2,3 시작*/
+
+#area1,#area2,#area3 {
+  position: relative;
+  overflow: hidden;
+}
+.main_content li{
+  float: left;
+  width: 800px;
+  height:300px;
+}
+
+
+
+/*
+.main_content span {
+  display: block;
+  font-size: 50px;
+} 
+
+이 부분 footerdot의 span과 겹쳐서 오류 !!*/
+
+.back{
+  left:0;
+  border-width: 5px;
+  padding: 3px
+}
+.next{
+  right:0;
+  border-width: 5px;
+  padding: 3px
+}
+.container1 img {
+  width: 100%; 
+  
+} 
+.height { 
+  height: 10px; 
+} 
+     
+/* 이미지 슬라이드 컨테이너! */
+.container1 { 
+  max-width: 900px; /* 사진 크기에 따라 조절하기*/
+  position: relative; 
+  margin: auto; 
+  
+} 
+
+.container1 img {
+  width: 900px;
+  height: 550px;
+}
+     
+.next { 
+  right: 0; 
+} 
+     
+/* 앞,뒤 이동하는 버튼 */
+.previous{
+  cursor: pointer; 
+  position: absolute; 
+  top: 50%; 
+  padding: 10px; 
+  margin-top: -25px; 
+  background-color: #bbbbbb;
+  border-bottom-right-radius: 30px;
+  border-top-right-radius: 30px;
+}
+.next { 
+  cursor: pointer; 
+  position: absolute; 
+  top: 50%; 
+  padding: 10px; 
+  margin-top: -25px; 
+  background-color:#bbbbbb;
+  border-bottom-left-radius: 30px;
+  border-top-left-radius: 30px;
+} 
+
+
+       
+/* Slider image number */
+.slideNumber { 
+  background-color: #f4f3ef ;
+  color:#000000 ;
+  border-radius: 25px; 
+  right: 0; 
+  opacity: .3; 
+  margin: 5px; 
+  width: 30px; 
+  height: 30px; 
+  text-align: center; 
+  font-weight: bold; 
+  font-size: 20px; 
+  position: absolute; 
+} 
+.fa { 
+  font-size: 32px; 
+} 
+     
+.fa:hover { 
+  transform: rotate(360deg); 
+  transition: 1s; 
+  color: white; 
+} 
+     
+.footerdot,.footerdot1,.footerdot2,.footerdot3,
+.footerdot4,.footerdot5,.footerdot6,.footerdot7 { 
+  cursor: pointer; 
+  height: 15px; 
+  width: 15px; 
+  margin: 0 2px; 
+  background-color: #e6dfdf; 
+  border-radius: 50%; 
+  display: inline-block;
+  transition: background-color 0.5s ease; 
+} 
+     
+.active, 
+.footerdot:hover,.footerdot1:hover,.footerdot2:hover,
+.footerdot3:hover,.footerdot4:hover,.footerdot5:hover 
+.footerdot6:hover,.footerdot7:hover{ 
+  background-color: black; 
+} 
+
+.areabox1 {
+  background-color:#CBDDE4;
+  max-width: 1000px; /* 사진 크기에 따라 조절하기*/
+  position: relative; 
+  margin: auto; 
+  margin-top: 15%;
+  padding : 30px;
+  padding-bottom: 20px;
+  padding-top: 20px;
+  align-content: center;}
+.areabox2 {
+  background-color:#CBD9D6;
+  max-width: 1000px; /* 사진 크기에 따라 조절하기*/
+  position: relative; 
+  margin: auto; 
+  padding : 30px;
+  padding-bottom: 20px;
+  padding-top: 20px;
+  align-content: center;}
+.areabox3 {
+  background-color:#BEB8C5;
+  max-width: 1000px; /* 사진 크기에 따라 조절하기*/
+  position: relative; 
+  margin: auto; 
+  padding : 30px;
+  padding-bottom: 20px;
+  padding-top: 20px;
+  align-content: center;}  
+
+  /*올라가기버튼*/
+  #wrap{
+    margin:0 auto;
+    width:300px;
+  }
+  #back-to-top { 
+    display: inline-block;
+    background-color: #2c2c2c;;
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    border-radius: 4px;
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    transition: background-color .3s, 
+      opacity .5s, visibility .5s;
+    opacity: 0;
+    visibility: hidden;
+    z-index: 1000;
+  }
+  #back-to-top::after {
+    content: "\f077";
+    font-family: FontAwesome;
+    font-weight: normal;
+    font-style: normal;
+    font-size: 2em;
+    line-height: 50px;
+    color: #fff;
+  }
+  #back-to-top:hover {
+    cursor: pointer;
+    background-color: #525252;
+  }
+  #back-to-top:active {
+    background-color: #2c2c2c;
+  }
+   #back-to-top.show {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  /* 팝업 */
+  .pop-layer .pop-container {
+    padding: 20px 25px;
+  }
+
+  .pop-layer p.ctxt {
+    font-size: 18px;
+    color: rgb(0, 0, 0);
+    line-height: 25px;
+  }
+
+  .pop-layer .btn-r {
+    width: 100%;
+    margin: 10px 0 20px;
+    padding-top: 10px;
+    border-top: 1px solid rgb(90, 90, 90);
+    text-align: right;
+  }
+
+  .pop-layer {
+    margin: 50%;
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 500px;
+    height: auto;
+    background-color: rgba(243, 237, 237, 0.9);
+    border: 5px solid #2c2c2c;
+    z-index: 10;
+  }
+
+  a.btn-layerClose {
+    display: inline-block;
+    height: 25px;
+    padding: 0 14px 0;
+    border: 1px solid #2c2c2c;
+    background-color: #292929;
+    font-size: 13px;
+    color: rgba(243, 237, 237, 0.9);
+    line-height: 25px;
+  }
+
+  a.btn-layerClose:hover {
+    border: 1px solid #2c2c2c;
+    background-color: rgba(243, 237, 237, 0.9);
+    color: #292929;
+  }
+
+  p.img_title {
+    font-size: 25px;
+  }
