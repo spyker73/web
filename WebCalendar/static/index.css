@@ -7,20 +7,35 @@ body {
   display:flex;
 }
 
-/* navbar 수정 */
-
 .side_bar{
-  background-color: rgba(87, 102, 241, 0.822);;
+  background-color: rgba(56, 87, 187, 0.507);;
   padding: 0px;
   flex:1;
   margin:0;
   top: 10px;
   color: #fff;
   float:right;
+  position: relative;
+  overflow: hidden;
+  display: flex;
 }
 .side_bar > ul{
   list-style:none;
   float:left;
+}
+
+#previous{
+  position: relative;
+  float: left;
+}
+
+#next{
+  position: relative;
+  float:right
+}
+
+.change_date{
+  float: center;
 }
 /*
 #sidebox{
@@ -60,179 +75,9 @@ ul.navbar li{
   padding: 10px;
   flex:5;
 }
-.banner {
-  display: inline-block;
-  font-size : 30px;
-  text-align:center;
-  margin: 5px;
-  padding: 15px 20px;
-}
-.main_content > .map {
-  background-image: url("img/map.jpg");
-  background-size: contain;
-  width:1050px;
-  height:500px;
-  margin:20px;
-  margin-top:5%;
-  margin-left: 7.5%;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content:center;
-}
-.main_content a{
-  font-size: 20px;
-  text-decoration: none;
-  color: #2c2c2c;
-}
-/*구역1,2,3 깊이 및 위치 조정*/
-.map_area1,.map_area2,.map_area3{
-  z-index:0;
-}
-
-
-/*위치 아이콘 깊이 및 위치 조정*/
-.location{
-  width: 70px;
-  height: auto;
-  z-index:1;
-}
-#location1_icon1{/*진주성 야경*/
-  left:40%;
-  top:60%;
-  position: relative;
-}
-#location1_icon2{/*불꽃놀이*/
-  left:40%;
-  top:70%;
-  position: relative;
-}
-#location1_icon3{/*수상등*/
-  left:50%;
-  top:70%;
-  position: relative;
-}
-#location2_icon1{/*드라마 세트장*/
-  left:35%;
-  top:30%;
-  position: relative;
-}
-#location2_icon2{/*먹거리*/
-  left:48%;
-  top:40%;
-  position: relative;
-}
-#location3_icon1{/*소망등 터널*/
-  left:40%;
-  top:18%;
-  position: relative;
-}
-#location3_icon2{/*유등 띄우기*/
-  left:43%;
-  top:-17%;
-  position: relative;
-}
-#location3_icon3{/*진주교*/
-  left:46%;
-  top:5%;
-  position: relative;
-}
-
-/*구역1,2,3 시작*/
-
-#area1,#area2,#area3 {
-  position: relative;
-  overflow: hidden;
-}
-.main_content li{
-  float: left;
-  width: 800px;
-  height:300px;
-}
-
-
-
-/*
-.main_content span {
-  display: block;
-  font-size: 50px;
-} 
-
-이 부분 footerdot의 span과 겹쳐서 오류 !!*/
-
-.back{
-  left:0;
-  border-width: 5px;
-  padding: 3px
-}
-.next{
-  right:0;
-  border-width: 5px;
-  padding: 3px
-}
-.container1 img {
-  width: 100%; 
-  
-} 
-.height { 
-  height: 10px; 
-} 
-     
-/* 이미지 슬라이드 컨테이너! */
-.container1 { 
-  max-width: 900px; /* 사진 크기에 따라 조절하기*/
-  position: relative; 
-  margin: auto; 
-  
-} 
-
-.container1 img {
-  width: 900px;
-  height: 550px;
-}
-     
-.next { 
-  right: 0; 
-} 
-     
-/* 앞,뒤 이동하는 버튼 */
-.previous{
-  cursor: pointer; 
-  position: absolute; 
-  top: 50%; 
-  padding: 10px; 
-  margin-top: -25px; 
-  background-color: #bbbbbb;
-  border-bottom-right-radius: 30px;
-  border-top-right-radius: 30px;
-}
-.next { 
-  cursor: pointer; 
-  position: absolute; 
-  top: 50%; 
-  padding: 10px; 
-  margin-top: -25px; 
-  background-color:#bbbbbb;
-  border-bottom-left-radius: 30px;
-  border-top-left-radius: 30px;
-} 
-
 
        
-/* Slider image number */
-.slideNumber { 
-  background-color: #f4f3ef ;
-  color:#000000 ;
-  border-radius: 25px; 
-  right: 0; 
-  opacity: .3; 
-  margin: 5px; 
-  width: 30px; 
-  height: 30px; 
-  text-align: center; 
-  font-weight: bold; 
-  font-size: 20px; 
-  position: absolute; 
-} 
+
 .fa { 
   font-size: 32px; 
 } 
@@ -333,55 +178,55 @@ ul.navbar li{
     visibility: visible;
   }
 
-  /* 팝업 */
-  .pop-layer .pop-container {
-    padding: 20px 25px;
-  }
+  html {
+    font-family: sans-serif;
+    font-size: 15px;
+    line-height: 1.4;
+    color: #444;
+}
+#wrap {
+  width: 1100px;
+  margin: 0 auto;
+}
+  
+#external-events {
+  float: left;
+  width: 150px;
+  padding: 0 10px;
+  border: 1px solid #ccc;
+  background: #eee;
+  text-align: left;
+  color: #2c2c2c;
+}
+  
+#external-events h4 {
+  font-size: 16px;
+  margin-top: 0;
+  padding-top: 1em;
 
-  .pop-layer p.ctxt {
-    font-size: 18px;
-    color: rgb(0, 0, 0);
-    line-height: 25px;
-  }
+}
+  
+#external-events .fc-event {
+  margin: 10px 0;
+  cursor: pointer;
+}
+  
+#external-events p {
+  margin: 1.5em 0;
+  font-size: 11px;
+  color: #666;
+}
+  
+#external-events p input {
+  margin: 0;
+  vertical-align: middle;
+}
 
-  .pop-layer .btn-r {
-    width: 100%;
-    margin: 10px 0 20px;
-    padding-top: 10px;
-    border-top: 1px solid rgb(90, 90, 90);
-    text-align: right;
-  }
+#calendar {
+  float: right;
+  width: 900px;
+}
 
-  .pop-layer {
-    margin: 50%;
-    display: none;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 500px;
-    height: auto;
-    background-color: rgba(243, 237, 237, 0.9);
-    border: 5px solid #2c2c2c;
-    z-index: 10;
-  }
-
-  a.btn-layerClose {
-    display: inline-block;
-    height: 25px;
-    padding: 0 14px 0;
-    border: 1px solid #2c2c2c;
-    background-color: #292929;
-    font-size: 13px;
-    color: rgba(243, 237, 237, 0.9);
-    line-height: 25px;
-  }
-
-  a.btn-layerClose:hover {
-    border: 1px solid #2c2c2c;
-    background-color: rgba(243, 237, 237, 0.9);
-    color: #292929;
-  }
-
-  p.img_title {
-    font-size: 25px;
-  }
+#fc-event{
+  background-color: deepskyblue;
+}
